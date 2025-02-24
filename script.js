@@ -8,7 +8,7 @@ document.getElementById("addTaskBtn").addEventListener('click', function() {
     if (taskInput){
 //adds the new task
     tasks.push(taskInput)
-//clears what is in the input box 
+//clears what is in the input box and sets value to nothing 
     document.getElementById('taskInput').value = ''
 
     displayTasks()
