@@ -17,6 +17,10 @@ document.getElementById('addTaskbtn').addEventListener('click', function() {
         // Call function to display the tasks
         displayTasks();
     }
+
+    //include keydown syntax in enter 
+    
+ 
 });
 
 // Function to display the tasks from tasks[] in the UL 
