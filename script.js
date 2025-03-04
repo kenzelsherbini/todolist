@@ -2,9 +2,12 @@
 let tasks = [];
 
 // Add an event listener to add tasks 
-document.getElementById('addTaskbtn').addEventListener('click', function() {
+document.getElementById('addTaskbtn').addEventListener('click', addTask);
+
+// Function to add a task
+function addTask() {
     // Store the text value from input as a variable taskInput 
-    let taskInput = document.getElementById('taskInput').value;
+    let taskInput = document.getElementById('taskInput').value.trim();
 
     // Check if anything is in the input box
     if (taskInput) {
@@ -17,11 +20,7 @@ document.getElementById('addTaskbtn').addEventListener('click', function() {
         // Call function to display the tasks
         displayTasks();
     }
-
-    //include keydown syntax in enter 
-    
- 
-});
+}
 
 // Function to display the tasks from tasks[] in the UL 
 function displayTasks() {
@@ -50,6 +49,9 @@ function displayTasks() {
         // Append the new task to the task list 
         taskList.appendChild(li);
     });
+
+    // Update the task counter
+    updateCounter();
 }
 
 // Function to remove a task from the list when the "√" button is clicked 
@@ -61,6 +63,11 @@ function removeTask(index) {
     displayTasks();
 }
 
+// Function to update the task counter
+function updateCounter() {
+    document.getElementById('taskCounter').innerText = `Total Tasks: ${tasks.length}`;
+}
+
 // Event listener for the "Clear All Tasks" button
 document.getElementById('clearTaskBtn').addEventListener('click', function() {
     // Empty the tasks array 
@@ -68,4 +75,11 @@ document.getElementById('clearTaskBtn').addEventListener('click', function() {
 
     // Call the function to clear tasks
     displayTasks();
+});
+
+// Event listener for enter key on input box
+document.getElementById('taskInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        addTask();
+    }
 });
